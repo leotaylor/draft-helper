@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Route, BrowserRouter, Redirect, Switch} from 'react-router-dom';
+import './App.css';
 
 // import CurrentTeam from '../components/CurrentTeam/CurrentTeam';
 import DraftPage from '../components/DraftPage/DraftPage';
@@ -11,7 +12,8 @@ import Register from '../components/Register/Register';
 // import Player from '../components/Player/Player';
 // import PlayerList from '../components/PlayerList/PlayerList';
 
-import './App.css';
+import fbConnection from '../firebaseRequests/connection';
+fbConnection();
 
 const PrivateRoute = ({ component: Component, authed, ...rest}) => {
   return (
