@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Route, BrowserRouter, Redirect, Switch} from 'react-router-dom';
+import firebase from 'firebase';
 import './App.css';
 
 // import CurrentTeam from '../components/CurrentTeam/CurrentTeam';
@@ -52,6 +53,24 @@ const PublicRoute = ({ component: Component, authed, ...rest}) => {
 class App extends Component {
   state={
     authed: false,
+  }
+
+  componentDidMount () {
+    this.removeListener = firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({authed: true});
+      } else {
+        this.setState({authed: false});
+      }
+    });
+  }
+
+  componentWillUnmount () {
+    this.removeListener();
+  }
+
+  runAway = () => {
+    this.setState({authed: false});
   }
 
   render () {
