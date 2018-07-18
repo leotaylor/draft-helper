@@ -32,24 +32,24 @@ class RB extends React.Component {
         //   </li>
         // );
         return (
-          <table className="table table-hover table-condensed">
-            <tbody>
-              <tr>
-                <th scope="row" key={player.playerId}></th>
-                <td>{player.displayName}</td>
-                <td>{player.team}</td>
-                <td><button className="btn-xs btn-danger">Drafted</button></td>
-                <td><button className="btn-xs btn-success">My Team</button></td>
-              </tr>
-            </tbody>
-          </table>
+          <tr key={player.playerId}>
+            <th scope="row"></th>
+            <td>{player.displayName}</td>
+            <td>{player.team}</td>
+            <td><button className="btn-xs btn-danger">Drafted</button></td>
+            <td><button className="btn-xs btn-success">My Team</button></td>
+          </tr>
         );
       }
     });
     return (
       <div className="RB">
         <h1>Running Back</h1>
-        {playerComponent}
+        <table className="table">
+          <tbody>
+            {playerComponent}
+          </tbody>
+        </table>
       </div>
     );
   }
