@@ -69,7 +69,7 @@ class App extends Component {
     this.removeListener();
   }
 
-  runAway = () => {
+  logout = () => {
     this.setState({authed: false});
   }
 
@@ -78,7 +78,7 @@ class App extends Component {
       <div className="App">
         <BrowserRouter>
           <div>
-            <Navbar />
+            <Navbar authed={this.state.authed} logout={this.logout}/>
             <div className="container">
               <div className="row">
                 <Switch>
@@ -89,7 +89,7 @@ class App extends Component {
                     component={DraftPage}
                   />
                   <PrivateRoute
-                    path="/savedteampage"
+                    path="/myteams"
                     authed={this.state.authed}
                     component={SavedTeamPage}
                   />
