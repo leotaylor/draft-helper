@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import {Route, BrowserRouter, Redirect, Switch} from 'react-router-dom';
+import firebase from 'firebase';
+import './App.css';
 
 // import CurrentTeam from '../components/CurrentTeam/CurrentTeam';
 import DraftPage from '../components/DraftPage/DraftPage';
@@ -11,7 +13,8 @@ import Register from '../components/Register/Register';
 // import Player from '../components/Player/Player';
 // import PlayerList from '../components/PlayerList/PlayerList';
 
-import './App.css';
+import fbConnection from '../firebaseRequests/connection';
+fbConnection();
 
 const PrivateRoute = ({ component: Component, authed, ...rest}) => {
   return (
@@ -52,12 +55,30 @@ class App extends Component {
     authed: false,
   }
 
+  componentDidMount () {
+    this.removeListener = firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({authed: true});
+      } else {
+        this.setState({authed: false});
+      }
+    });
+  }
+
+  componentWillUnmount () {
+    this.removeListener();
+  }
+
+  logout = () => {
+    this.setState({authed: false});
+  }
+
   render () {
     return (
       <div className="App">
         <BrowserRouter>
           <div>
-            <Navbar />
+            <Navbar authed={this.state.authed} logout={this.logout}/>
             <div className="container">
               <div className="row">
                 <Switch>
@@ -68,7 +89,7 @@ class App extends Component {
                     component={DraftPage}
                   />
                   <PrivateRoute
-                    path="/savedteampage"
+                    path="/myteams"
                     authed={this.state.authed}
                     component={SavedTeamPage}
                   />
