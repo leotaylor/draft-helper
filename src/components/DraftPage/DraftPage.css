@@ -1,2 +1,7 @@
 .DraftPage {
   background-color: #cdb632; }
+
+.PositionGroup {
+  height: 400px;
+  overflow: scroll;
+  list-style-type: none; }
