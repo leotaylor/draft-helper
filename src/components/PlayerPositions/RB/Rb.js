@@ -13,7 +13,6 @@ class RB extends React.Component {
     footballNerdRequest.getRankings()
       .then((players) => {
         this.setState({players: players.data.DraftRankings});
-        console.log(players.data.DraftRankings);
       })
       .catch((err) => {
         console.error('error with RB get requests', err);
@@ -33,7 +32,7 @@ class RB extends React.Component {
         //   </li>
         // );
         return (
-          <table className="table table-dark">
+          <table className="table table-hover table-condensed">
             <tbody>
               <tr>
                 <th scope="row" key={player.playerId}></th>
