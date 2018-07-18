@@ -79,7 +79,7 @@ class App extends Component {
         <BrowserRouter>
           <div>
             <Navbar authed={this.state.authed} logout={this.logout}/>
-            <div className="container">
+            <div>
               <div className="row">
                 <Switch>
                   <Route path='/' exact component={DraftPage} />

@@ -17,12 +17,12 @@ class Navbar extends React.Component {
         <nav className="navbar navbar-inverse">
           <div className="container-fluid">
             <div className="navbar-header">
-              <Link to="/" className="navbar-brand">Draft-Helper</Link>
+              <Link to="/" className="navbar-brand">Draft Helper</Link>
             </div>
             {
               authed ? (
                 <ul className="nav navbar-nav navbar-right">
-                  <li><Link to="/myteams">Saved Teams</Link></li>
+                  <li><Link to="/myteams">My Teams</Link></li>
                   <li className="navbar-form">
                     <button onClick={logoutClickEvent} className="btn btn-danger">Logout</button>
                   </li>
