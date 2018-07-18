@@ -4,4 +4,5 @@
 .PositionGroup {
   height: 400px;
   overflow: scroll;
-  list-style-type: none; }
+  list-style-type: none;
+  margin-bottom: 25px; }

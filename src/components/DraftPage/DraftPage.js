@@ -11,11 +11,14 @@ import QB from '../../components/PlayerPositions/QB/Qb';
 import TE from '../../components/PlayerPositions/TE/Te';
 
 class DraftPage extends React.Component {
+  // state = {
+  //   players: [],
+  // }
 
   // componentDidMount () {
   //   footballNerdRequest.getRankings()
-  //     .then((rankings) => {
-  //       console.log('Player Rankings:', rankings.data.DraftRankings);
+  //     .then((players) => {
+  //       this.setState({players: players})
   //     })
   //     .catch((err) => {
   //       console.error(err);
