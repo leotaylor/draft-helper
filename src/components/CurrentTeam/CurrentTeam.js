@@ -6,7 +6,7 @@ class CurrentTeam extends React.Component {
   render () {
     return (
       <div className="CurrentTeam">
-        <h1>CurrentTeam</h1>
+        <h1>My Team</h1>
       </div>
     );
   }
