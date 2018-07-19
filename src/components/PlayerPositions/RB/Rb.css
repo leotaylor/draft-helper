@@ -4,4 +4,9 @@
 
 .RB h1 {
   background-color: black;
-  color: white; }
+  color: white;
+  margin-bottom: 0;
+  padding-bottom: 15px; }
+
+.RB .table td {
+  padding: 0; }

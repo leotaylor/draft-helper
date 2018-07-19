@@ -21,7 +21,7 @@ class RB extends React.Component {
 
   draftClickEvent = (e) => {
     const playerId = e.target.id;
-    console.log('playerID?', playerId);
+    console.log(playerId);
   }
 
   render () {

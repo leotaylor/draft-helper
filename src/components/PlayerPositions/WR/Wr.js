@@ -31,7 +31,7 @@ class WR extends React.Component {
           <tr key={player.playerId}>
             <td>{player.displayName}</td>
             <td>{player.team}</td>
-            <td><button className="btn-xs btn-danger" id={player.playerId} onClick={this.draftClickEvent}>Not Mine</button></td>
+            <td><button className="btn-xs btn-danger" id={player.playerId} onClick={this.draftClickEvent}>Drafted</button></td>
             <td><button className="btn-xs btn-success">My Team</button></td>
           </tr>
         );
