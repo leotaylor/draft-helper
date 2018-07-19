@@ -19,8 +19,9 @@ class TE extends React.Component {
       });
   }
 
-  draftClickEvent = () => {
-    console.log('playerID?', this);
+  draftClickEvent = (e) => {
+    const playerId = e.target.id;
+    console.log('playerID?', playerId);
   }
 
   render () {
@@ -31,7 +32,7 @@ class TE extends React.Component {
             <th scope="row"></th>
             <td>{player.displayName}</td>
             <td>{player.team}</td>
-            <td><button className="btn-xs btn-danger" onClick={this.draftClickEvent}>Drafted</button></td>
+            <td><button className="btn-xs btn-danger" id={player.playerId} onClick={this.draftClickEvent}>Drafted</button></td>
             <td><button className="btn-xs btn-success">My Team</button></td>
           </tr>
         );

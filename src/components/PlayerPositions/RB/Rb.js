@@ -19,8 +19,9 @@ class RB extends React.Component {
       });
   }
 
-  draftClickEvent = () => {
-    console.log('playerID?', this);
+  draftClickEvent = (e) => {
+    const playerId = e.target.id;
+    console.log(playerId);
   }
 
   render () {
@@ -28,10 +29,10 @@ class RB extends React.Component {
       if (player.position === 'RB') {
         return (
           <tr key={player.playerId}>
-            <th scope="row"></th>
+            {/* <th scope="row"></th> */}
             <td>{player.displayName}</td>
             <td>{player.team}</td>
-            <td><button className="btn-xs btn-danger" onClick={this.draftClickEvent}>Drafted</button></td>
+            <td><button className="btn-xs btn-danger" id={player.playerId} onClick={this.draftClickEvent}>Drafted</button></td>
             <td><button className="btn-xs btn-success">My Team</button></td>
           </tr>
         );

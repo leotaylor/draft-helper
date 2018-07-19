@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './DraftPage.css';
-// import footballNerdRequest from '../../footballApiRequests/footballNerdRequest';
+import footballNerdRequest from '../../footballApiRequests/footballNerdRequest';
 
 import DraftHistory from '../../components/DraftHistory/DraftHistory';
 import CurrentTeam from '../../components/CurrentTeam/CurrentTeam';
@@ -11,19 +11,21 @@ import QB from '../../components/PlayerPositions/QB/Qb';
 import TE from '../../components/PlayerPositions/TE/Te';
 
 class DraftPage extends React.Component {
-  // state = {
-  //   players: [],
-  // }
+  state = {
+    players: [],
+    myTeam: [],
+  }
 
-  // componentDidMount () {
-  //   footballNerdRequest.getRankings()
-  //     .then((players) => {
-  //       this.setState({players: players})
-  //     })
-  //     .catch((err) => {
-  //       console.error(err);
-  //     });
-  // }
+  componentDidMount () {
+    footballNerdRequest.getRankings()
+      .then((players) => {
+        this.setState({players: players.data.DraftRankings});
+        console.log(this.state);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
 
   render () {
     return (
