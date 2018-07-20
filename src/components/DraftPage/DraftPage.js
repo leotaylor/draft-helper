@@ -16,6 +16,12 @@ class DraftPage extends React.Component {
     players: [],
   }
 
+  draftPlayer = (key) => {
+    const draftMe = {...this.state.players};
+    draftMe[key] = draftMe[key];
+    this.setState({players: draftMe});
+  }
+
   componentDidMount () {
     footballNerdRequest.getRankings()
       .then((players) => {
@@ -44,6 +50,7 @@ class DraftPage extends React.Component {
           <RB
             key={player.playerId}
             details={player}
+            draftPlayer={this.draftPlayer}
           />
         );
       }
@@ -73,7 +80,11 @@ class DraftPage extends React.Component {
         <h1>Draft Page</h1>
         <div>
           <div className="col-sm-12">
-            <div className="col-sm-3"><DraftHistory /></div>
+            <div className="col-sm-3">
+              <DraftHistory
+                // players={this.state.players}
+              />
+            </div>
             <div className="col-sm-3">
               <div className="PositionGroup">
                 <h1>Running Back</h1>
