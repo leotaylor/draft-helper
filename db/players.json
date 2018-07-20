@@ -1,0 +1,17 @@
+{
+  "player1": {
+    "displayName": "Calvin Johnson",
+    "position": "WR",
+    "team": "DET"
+  },
+  "player2": {
+    "displayName": "Lester Rodgers",
+    "position": "TE",
+    "team": "CIN"
+  },
+  "player3": {
+    "displayName": "Troy Aikman",
+    "position": "QB",
+    "team": "DAL"
+  }
+}

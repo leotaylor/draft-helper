@@ -7,12 +7,13 @@ import './Qb.css';
 class QB extends React.Component {
 
   draftClickEvent = () => {
-    // this.props.draftPlayer(this.props.details.playerId);
-    console.log('id?', this.props.details.playerId);
+    // this.props.draftPlayer(this.props.details);
+    console.log('click draft player', this.props.details);
   }
 
   render () {
     const {details} = this.props;
+    // console.log('qbprops',this.props);
     return (
       <tr>
         <th scope="row"></th>

@@ -14,12 +14,14 @@ class DraftPage extends React.Component {
 
   state = {
     players: [],
+    myTeam: {},
   }
 
   draftPlayer = (key) => {
-    const draftMe = {...this.state.players};
-    draftMe[key] = draftMe[key];
-    this.setState({players: draftMe});
+    const draftMe = {...this.state.myTeam};
+    console.log('draftMe', draftMe);
+    draftMe[key] = draftMe[key] + 1 || 1;
+    this.setState({myTeam: draftMe});
   }
 
   componentDidMount () {
@@ -82,7 +84,7 @@ class DraftPage extends React.Component {
           <div className="col-sm-12">
             <div className="col-sm-3">
               <DraftHistory
-                // players={this.state.players}
+                players={this.state.myTeam}
               />
             </div>
             <div className="col-sm-3">
