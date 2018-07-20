@@ -5,6 +5,19 @@
 .PositionGroup {
   height: 400px;
   overflow: scroll;
-  list-style-type: none;
+  // list-style-type: none;
   margin-bottom: 25px;
+  background-color: white;
+  font-size: 12px;
+}
+
+.PositionGroup .table td {
+  padding: 0;
+}
+
+.PositionGroup h1{
+  background-color: black;
+  color: white;
+  margin: 0;
+  padding-bottom: 15px;
 }
