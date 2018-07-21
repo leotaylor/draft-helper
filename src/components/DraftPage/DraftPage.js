@@ -15,12 +15,20 @@ class DraftPage extends React.Component {
   state = {
     players: [],
     drafted: [],
+    currentTeam: [],
   }
 
-  draftPlayer = (key, e) => {
+  draftPlayer = (key) => {
     const draftMe = [...this.state.drafted];
     draftMe.push(key);
     this.setState({drafted: draftMe});
+  }
+
+  myPlayer = (key) => {
+    this.draftPlayer(key);
+    const myPlayer = [...this.state.currentTeam];
+    myPlayer.push(key);
+    this.setState({currentTeam: myPlayer});
   }
 
   componentDidMount () {
@@ -41,6 +49,7 @@ class DraftPage extends React.Component {
             key={player.playerId}
             details={player}
             draftPlayer={this.draftPlayer}
+            myPlayer={this.myPlayer}
           />
         );
       }
@@ -52,6 +61,7 @@ class DraftPage extends React.Component {
             key={player.playerId}
             details={player}
             draftPlayer={this.draftPlayer}
+            myPlayer={this.myPlayer}
           />
         );
       }
@@ -63,6 +73,7 @@ class DraftPage extends React.Component {
             key={player.playerId}
             details={player}
             draftPlayer={this.draftPlayer}
+            myPlayer={this.myPlayer}
           />
         );
       }
@@ -74,6 +85,7 @@ class DraftPage extends React.Component {
             key={player.playerId}
             details={player}
             draftPlayer={this.draftPlayer}
+            myPlayer={this.myPlayer}
           />
         );
       }
@@ -81,6 +93,14 @@ class DraftPage extends React.Component {
     const draftHistoryComponents = this.state.drafted.map((player) => {
       return (
         <DraftHistory
+          key={player.playerId}
+          details={player}
+        />
+      );
+    });
+    const currentTeamComponent = this.state.currentTeam.map((player) => {
+      return (
+        <CurrentTeam
           key={player.playerId}
           details={player}
         />
@@ -137,7 +157,16 @@ class DraftPage extends React.Component {
                 </table>
               </div>
             </div>
-            <div className="col-sm-3"><CurrentTeam /></div>
+            <div className="col-sm-3">
+              <div className="DraftedGroup">
+                <h1>Current Team</h1>
+                <table className="table">
+                  <tbody>
+                    {currentTeamComponent}
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
       </div>

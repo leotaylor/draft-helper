@@ -5,10 +5,14 @@ import './CurrentTeam.css';
 class CurrentTeam extends React.Component {
 
   render () {
+    const details = this.props.details;
     return (
-      <div className="CurrentTeam">
-        <h1>My Team</h1>
-      </div>
+      <tr>
+        <th scope="row"></th>
+        <td className="text-left">{details.displayName}</td>
+        <td className="text-center">{details.position}</td>
+        <td className="text-right">{details.team}</td>
+      </tr>
     );
   }
 }
