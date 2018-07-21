@@ -22,6 +22,9 @@ class DraftPage extends React.Component {
     const draftMe = [...this.state.drafted];
     draftMe.push(key);
     this.setState({drafted: draftMe});
+    console.log('key', key);
+    const filterd = this.state.players.filter(guy => guy.playerId !== key.playerId);
+    this.setState({players: filterd});
   }
 
   myPlayer = (key) => {
