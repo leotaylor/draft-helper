@@ -2,7 +2,8 @@ import React from 'react';
 
 import './DraftPage.css';
 import footballNerdRequest from '../../footballApiRequests/footballNerdRequest';
-
+import authResuests from '../../firebaseRequests/auth';
+import myTeamRequest from '../../firebaseRequests/myTeamRequest';
 import DraftHistory from '../../components/DraftHistory/DraftHistory';
 import CurrentTeam from '../../components/CurrentTeam/CurrentTeam';
 import WR from '../../components/PlayerPositions/WR/Wr';
@@ -15,23 +16,35 @@ class DraftPage extends React.Component {
   state = {
     players: [],
     drafted: [],
-    currentTeam: [],
+    myTeam: [],
   }
 
   draftPlayer = (key) => {
     const draftMe = [...this.state.drafted];
     draftMe.push(key);
     this.setState({drafted: draftMe});
-    console.log('key', key);
     const filterd = this.state.players.filter(guy => guy.playerId !== key.playerId);
     this.setState({players: filterd});
   }
 
   myPlayer = (key) => {
     this.draftPlayer(key);
-    const myPlayer = [...this.state.currentTeam];
+    const myPlayer = [...this.state.myTeam];
     myPlayer.push(key);
-    this.setState({currentTeam: myPlayer});
+    this.setState({myTeam: myPlayer});
+  }
+
+  saveTeam = () => {
+    const newTeam = {players: {...this.state.myTeam}};
+    newTeam.uid = authResuests.getUid();
+    myTeamRequest
+      .postRequest(newTeam)
+      .then(() => {
+        this.state.histroy.push('/myteams');
+      })
+      .catch((err) => {
+        console.error('error in order post', err);
+      });
   }
 
   componentDidMount () {
@@ -101,7 +114,7 @@ class DraftPage extends React.Component {
         />
       );
     });
-    const currentTeamComponent = this.state.currentTeam.map((player) => {
+    const currentTeamComponent = this.state.myTeam.map((player) => {
       return (
         <CurrentTeam
           key={player.playerId}
@@ -162,12 +175,13 @@ class DraftPage extends React.Component {
             </div>
             <div className="col-sm-3">
               <div className="DraftedGroup">
-                <h1>Current Team</h1>
+                <h1>My Team</h1>
                 <table className="table">
                   <tbody>
                     {currentTeamComponent}
                   </tbody>
                 </table>
+                <button className="btn btn-danger" onClick={this.saveTeam}>Save My Team</button>
               </div>
             </div>
           </div>

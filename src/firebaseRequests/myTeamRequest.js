@@ -21,4 +21,17 @@ const getRequest = (uid) => {
   });
 };
 
-export default {getRequest};
+const postRequest = (newTeam) => {
+  return new Promise((resolve, reject) => {
+    axios
+      .post(`${constants.firebaseConfig.databaseURL}/myTeam.json`, newTeam)
+      .then((res) => {
+        resolve(res);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
+
+export default {getRequest, postRequest};
