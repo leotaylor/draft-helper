@@ -7,7 +7,7 @@ import './Qb.css';
 class QB extends React.Component {
 
   draftClickEvent = () => {
-    // this.props.draftPlayer(this.props.details);
+    this.props.draftPlayer(this.props.details);
     console.log('click draft player', this.props.details);
   }
 

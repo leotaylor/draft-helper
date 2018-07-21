@@ -7,8 +7,7 @@ import './Te.css';
 class TE extends React.Component {
 
   draftClickEvent = () => {
-    // this.props.draftPlayer(this.props.details.playerId);
-    console.log('id?', this.props.details.playerId);
+    this.props.draftPlayer(this.props.details);
   }
 
   render () {

@@ -14,21 +14,19 @@ class DraftPage extends React.Component {
 
   state = {
     players: [],
-    myTeam: {},
+    drafted: [],
   }
 
-  draftPlayer = (key) => {
-    const draftMe = {...this.state.myTeam};
-    console.log('draftMe', draftMe);
-    draftMe[key] = draftMe[key] + 1 || 1;
-    this.setState({myTeam: draftMe});
+  draftPlayer = (key, e) => {
+    const draftMe = [...this.state.drafted];
+    draftMe.push(key);
+    this.setState({drafted: draftMe});
   }
 
   componentDidMount () {
     footballNerdRequest.getRankings()
       .then((players) => {
         this.setState({players: players.data.DraftRankings});
-        // console.log('Player Rankings:', players.data.DraftRankings);
       })
       .catch((err) => {
         console.error(err);
@@ -42,6 +40,7 @@ class DraftPage extends React.Component {
           <WR
             key={player.playerId}
             details={player}
+            draftPlayer={this.draftPlayer}
           />
         );
       }
@@ -63,6 +62,7 @@ class DraftPage extends React.Component {
           <QB
             key={player.playerId}
             details={player}
+            draftPlayer={this.draftPlayer}
           />
         );
       }
@@ -73,9 +73,18 @@ class DraftPage extends React.Component {
           <TE
             key={player.playerId}
             details={player}
+            draftPlayer={this.draftPlayer}
           />
         );
       }
+    });
+    const draftHistoryComponents = this.state.drafted.map((player) => {
+      return (
+        <DraftHistory
+          key={player.playerId}
+          details={player}
+        />
+      );
     });
     return (
       <div className="DraftPage">
@@ -83,9 +92,14 @@ class DraftPage extends React.Component {
         <div>
           <div className="col-sm-12">
             <div className="col-sm-3">
-              <DraftHistory
-                players={this.state.myTeam}
-              />
+              <div className="DraftedGroup">
+                <h1>Draft History</h1>
+                <table className="table">
+                  <tbody>
+                    {draftHistoryComponents}
+                  </tbody>
+                </table>
+              </div>
             </div>
             <div className="col-sm-3">
               <div className="PositionGroup">

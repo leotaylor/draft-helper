@@ -6,7 +6,10 @@ class RB extends React.Component {
 
   draftClickEvent = () => {
     this.props.draftPlayer(this.props.details);
-    console.log('player?', this.props.details);
+  }
+
+  myTeamClickEvent = () => {
+    this.props.myPlayer(this.props.details);
   }
 
   render () {
@@ -17,7 +20,7 @@ class RB extends React.Component {
         <td className="text-left">{details.displayName}</td>
         <td className="text-left">{details.team}</td>
         <td><button className="btn-xs btn-danger" onClick={this.draftClickEvent}>Drafted</button></td>
-        <td><button className="btn-xs btn-success">My Team</button></td>
+        <td><button className="btn-xs btn-success" onClick={this.myTeamClickEvent}>My Team</button></td>
       </tr>
     );
   }
