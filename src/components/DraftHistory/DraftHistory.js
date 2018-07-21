@@ -5,10 +5,14 @@ import './DraftHistory.css';
 class DraftHistory extends React.Component {
 
   render () {
+    const details = this.props.details;
     return (
-      <div className="DraftHistory">
-        <h1>Draft History</h1>
-      </div>
+      <tr>
+        <th scope="row"></th>
+        <td className="text-left">{details.displayName}</td>
+        <td className="text-center">{details.position}</td>
+        <td className="text-right">{details.team}</td>
+      </tr>
     );
   }
 }

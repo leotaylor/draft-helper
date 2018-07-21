@@ -1,0 +1,29 @@
+{
+  "myTeam0" : {
+    "uid": "jo2pSMhEAjb1vL6J0wPvBImURVb2",
+    "myTeamName": "ManBearPigs",
+    "players" : {
+      "player1" : "1142",
+      "player2" : "2173",
+      "player3" : "3056"
+    }
+  },
+  "myTeam1" : {
+    "uid": "jo2pSMhEAjb1vL6J0wPvBImURVb2",
+    "myTeamName": "Chicago Beers",
+    "players" : {
+      "player1" : "1142",
+      "player2" : "2173",
+      "player3" : "3056"
+    }
+  },
+  "myTeam2" : {
+    "uid": "jo2pSMhEAjb1vL6J0wPvBImURVb2",
+    "myTeamName": "Detroit Loins",
+    "players" : {
+      "player1" : "1142",
+      "player2" : "2173",
+      "player3" : "3056"
+    }
+  }
+}

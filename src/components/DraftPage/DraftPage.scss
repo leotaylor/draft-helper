@@ -2,10 +2,28 @@
   background-color: rgb(205, 182, 50);
 }
 
+.DraftedGroup{
+  height: 825px;
+  overflow: scroll;
+  margin-bottom: 25px;
+  background-color: white;
+  font-size: 12px;
+}
+
+.DraftedGroup .table td {
+  padding: 0;
+}
+
+.DraftedGroup h1 {
+  background-color: black;
+  color: white;
+  margin: 0;
+  padding-bottom: 15px;
+}
+
 .PositionGroup {
   height: 400px;
   overflow: scroll;
-  // list-style-type: none;
   margin-bottom: 25px;
   background-color: white;
   font-size: 12px;
