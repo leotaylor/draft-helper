@@ -11,7 +11,7 @@ class CurrentTeam extends React.Component {
         <th scope="row"></th>
         <td className="text-left">{details.displayName}</td>
         <td className="text-center">{details.position}</td>
-        <td className="text-right">{details.team}</td>
+        <td>{details.team}</td>
       </tr>
     );
   }

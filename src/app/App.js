@@ -10,8 +10,6 @@ import SavedTeamPage from '../components/SavedTeamPage/SavedTeamPage';
 import Navbar from '../components/Navbar/Navbar';
 import Login from '../components/Login/Login';
 import Register from '../components/Register/Register';
-// import Player from '../components/Player/Player';
-// import PlayerList from '../components/PlayerList/PlayerList';
 
 import fbConnection from '../firebaseRequests/connection';
 fbConnection();

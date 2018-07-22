@@ -1,42 +1,45 @@
 import React from 'react';
 import authRequest from '../../firebaseRequests/auth';
 import myTeamRequest from '../../firebaseRequests/myTeamRequest';
+import footballNerdRequest from '../../footballApiRequests/footballNerdRequest';
+
+import MyTeam from '../MyTeam/MyTeam';
 
 import './SavedTeamPage.css';
 
 class SavedTeamPage extends React.Component {
-
   state = {
-    myTeam: [],
+    players: [],
+    myTeams: [],
   }
 
-  componentDidMount () {
-    myTeamRequest
-      .getRequest(authRequest.getUid())
-      .then((myTeam) => {
-        this.setState({myTeam});
-      })
-      .catch((err) => {
-        console.error('error with myTeam get request FB', err);
-      });
+  async componentDidMount () {
+    const teamRequest = myTeamRequest.getRequest(authRequest.getUid());
+    const rankingRequest = footballNerdRequest.getRankings();
+    const data = await Promise.all([teamRequest, rankingRequest]).catch(error => console.log({error}));
+    const myTeams = data[0];
+    const players = data[1].data.DraftRankings;
+    this.setState({myTeams, players});
   }
 
   render () {
-    const myTeamComponents = this.state.myTeam.map((team) => {
+    const {myTeams, players} = this.state;
+    const savedTeamComponent = myTeams.map(team => {
       return (
-        <tr key={team.playerId}>
-          <th scope="row">{team.myTeamName}</th>
-          <td>{team.displayName}</td>
-        </tr>
+        <MyTeam
+          // key={team.id}
+          teamDetails={team}
+          players={players}
+        />
       );
     });
     return (
       <div className="SavedTeamPage">
         <h1>Saved Team Page</h1>
-        <div className="col-sm-2">
+        <div className="col-sm-4">
           <table className="table">
             <tbody>
-              {myTeamComponents}
+              {savedTeamComponent}
             </tbody>
           </table>
         </div>
