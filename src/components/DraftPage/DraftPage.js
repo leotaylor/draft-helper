@@ -35,17 +35,36 @@ class DraftPage extends React.Component {
   }
 
   saveTeam = () => {
-    const newTeam = {players: {...this.state.myTeam}};
+    const newTeam = {};
+    const tempState = [...this.state.myTeam];
+    newTeam.players = tempState.map((player) => {
+      return (
+        player.playerId
+      );
+    });
     newTeam.uid = authResuests.getUid();
+    newTeam.myTeamName = 'My Team';
     myTeamRequest
       .postRequest(newTeam)
       .then(() => {
-        this.state.histroy.push('/myteams');
       })
       .catch((err) => {
         console.error('error in order post', err);
       });
   }
+
+  // saveTeam = () => {
+  //   const newTeam = {players: {...this.state.myTeam}};
+  //   newTeam.uid = authResuests.getUid();
+  //   newTeam.myTeamName = 'My Team';
+  //   myTeamRequest
+  //     .postRequest(newTeam)
+  //     .then(() => {
+  //     })
+  //     .catch((err) => {
+  //       console.error('error in order post', err);
+  //     });
+  // }
 
   componentDidMount () {
     footballNerdRequest.getRankings()
