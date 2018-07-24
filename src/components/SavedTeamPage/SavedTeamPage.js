@@ -46,6 +46,17 @@ class SavedTeamPage extends React.Component {
     }
   }
 
+  deleteTeamClick = (e) => {
+    const firebaseId = e.target.id;
+    teamRequests
+      .deleteRequest(firebaseId)
+      .then(() => {
+      })
+      .catch((err) => {
+        console.error('error with delete request', err);
+      });
+  }
+
   render () {
     const {myTeams, players, showForm} = this.state;
     const buttonComponent = (id, team) => {
@@ -76,9 +87,8 @@ class SavedTeamPage extends React.Component {
                 teamDetails={team}
                 players={players}
               />
-              <br/>
               <tr>
-                <td className="btn btn-danger">Delete Team</td>
+                <td className="btn btn-danger" id={team.id} onClick={this.deleteTeamClick}>Delete Team</td>
               </tr>
             </tbody>
           </table>

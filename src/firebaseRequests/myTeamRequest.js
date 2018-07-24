@@ -47,4 +47,17 @@ const putRequest = (teamId, updatedTeamName) => {
   });
 };
 
-export default {getRequest, postRequest, putRequest};
+const deleteRequest = (teamId) => {
+  return new Promise((resolve, reject) => {
+    axios
+      .delete(`${constants.firebaseConfig.databaseURL}/myTeam/${teamId}.json`)
+      .then((res) => {
+        resolve(res);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
+
+export default {getRequest, postRequest, putRequest, deleteRequest};
