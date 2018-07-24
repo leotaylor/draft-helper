@@ -46,11 +46,19 @@ class SavedTeamPage extends React.Component {
     }
   }
 
+  modifyTeams (teamId) {
+    const modifiedTeam = {...this.state.myTeams};
+    console.log({modifiedTeam}, {teamId});
+    delete modifiedTeam.myTeams.teamId;
+    this.setState({ myTeams: modifiedTeam});
+  }
+
   deleteTeamClick = (e) => {
     const firebaseId = e.target.id;
     teamRequests
       .deleteRequest(firebaseId)
       .then(() => {
+        this.modifyTeams(firebaseId);
       })
       .catch((err) => {
         console.error('error with delete request', err);
