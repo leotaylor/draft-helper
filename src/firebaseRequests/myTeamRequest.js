@@ -34,4 +34,17 @@ const postRequest = (newTeam) => {
   });
 };
 
-export default {getRequest, postRequest};
+const putRequest = (teamId, updatedTeamName) => {
+  return new Promise((resolve, reject) => {
+    axios
+      .put(`${constants.firebaseConfig.databaseURL}/myTeam/${teamId}.json`, updatedTeamName)
+      .then(res => {
+        resolve(res.data);
+      })
+      .catch(err => {
+        reject(err);
+      });
+  });
+};
+
+export default {getRequest, postRequest, putRequest};

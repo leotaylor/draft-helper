@@ -10,7 +10,6 @@ class MyTeam extends React.Component {
       .map(player => teamDetails.players.includes(player.playerId)
         ? (
           <tr key={player.playerId}>
-            <th scope="row">{teamDetails.myTeamName} <button>Edit Team Name</button></th>
             <td>{player.displayName}</td>
           </tr>
         )
