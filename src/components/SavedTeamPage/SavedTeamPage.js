@@ -48,7 +48,7 @@ class SavedTeamPage extends React.Component {
 
   modifyTeams (teamId) {
     const modifiedTeam = {...this.state.myTeams};
-    console.log({modifiedTeam}, {teamId});
+    // console.log({modifiedTeam});
     delete modifiedTeam.myTeams.teamId;
     this.setState({ myTeams: modifiedTeam});
   }
