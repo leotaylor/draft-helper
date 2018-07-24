@@ -1,3 +1,16 @@
 .SavedTeamPage {
-  background-color: rgb(205, 50, 76);
+  padding: 1%;
+}
+
+.savedTeam {
+  background-color: white;
+  border-radius: 5%;
+  margin: .5%;
+  width: 300px;
+  height: 450px;
+  overflow: scroll;
+}
+
+th {
+  margin-left: 65%;
 }

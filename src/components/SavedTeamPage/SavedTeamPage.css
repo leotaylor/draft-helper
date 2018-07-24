@@ -1,2 +1,13 @@
 .SavedTeamPage {
-  background-color: #cd324c; }
+  padding: 1%; }
+
+.savedTeam {
+  background-color: white;
+  border-radius: 5%;
+  margin: .5%;
+  width: 300px;
+  height: 450px;
+  overflow: scroll; }
+
+th {
+  margin-left: 65%; }
