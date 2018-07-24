@@ -2,59 +2,17 @@ import React from 'react';
 import authRequest from '../../firebaseRequests/auth';
 import myTeamRequest from '../../firebaseRequests/myTeamRequest';
 import footballNerdRequest from '../../footballApiRequests/footballNerdRequest';
+import teamRequests from '../../firebaseRequests/myTeamRequest';
 
 import MyTeam from '../MyTeam/MyTeam';
 
 import './SavedTeamPage.css';
 
-// class SavedTeamPage extends React.Component {
-//   state = {
-//     players: [],
-//     myTeams: [],
-//   }
-
-//   async componentDidMount () {
-//     const teamRequest = myTeamRequest.getRequest(authRequest.getUid());
-//     const rankingRequest = footballNerdRequest.getRankings();
-//     const data = await Promise.all([teamRequest, rankingRequest]).catch(error => console.log({error}));
-//     const myTeams = data[0];
-//     const players = data[1].data.DraftRankings;
-//     this.setState({myTeams, players});
-//   }
-
-//   render () {
-//     const {myTeams, players} = this.state;
-//     const savedTeamComponent = myTeams.map(team => {
-//       console.log({team});
-//       return (
-//         <MyTeam
-//           key={team.id}
-//           teamDetails={team}
-//           players={players}
-//         />
-//       );
-//     });
-//     return (
-//       <div className="SavedTeamPage">
-//         <h1>Saved Team Page</h1>
-//         <div className="col-sm-4">
-//           <table className="table">
-//             <tbody>
-//               {savedTeamComponent}
-//             </tbody>
-//           </table>
-//         </div>
-//       </div>
-//     );
-//   }
-// }
-
-// export default SavedTeamPage;
-
 class SavedTeamPage extends React.Component {
   state = {
     players: [],
     myTeams: [],
+    showForm: '',
   }
 
   async componentDidMount () {
@@ -66,33 +24,71 @@ class SavedTeamPage extends React.Component {
     this.setState({myTeams, players});
   }
 
+  changeNameClick = (e) => {
+    const showForm = e.target.id;
+    this.setState({showForm: showForm});
+  }
+
+  submitName = (e) => {
+    const newName = e.target.value;
+    // const teamId = e.target.id;
+    const teamId = this.state.showForm;
+    if (e.key === 'Enter') {
+      console.log({newName}, {teamId});
+      teamRequests
+        .putRequest(teamId, newName)
+        .then(() => {
+          this.setState({showForm: ''});
+        })
+        .catch((err) => {
+          console.error('error with put request', err);
+        });
+    }
+  }
+
   render () {
-    const {myTeams, players} = this.state;
+    const {myTeams, players, showForm} = this.state;
+    const buttonComponent = (id, team) => {
+      if (showForm !== id) {
+        return (
+          <th scope="row" className="btn btn-default text-center" id={id} onClick={this.changeNameClick}>{team.myTeamName}</th>
+        );
+      } else {
+        return (
+          <td>
+            <input type="text" className="form-control" id={id} onKeyPress={this.submitName} placeholder="New Team Name" aria-describedby="basic-addon1"/>
+          </td>
+        );
+      }
+    };
+
     const savedTeamComponent = myTeams.map(team => {
       return (
-        <table
-          key={team.id}
-        >
-          <thead>
-            <tr>
-              <th scope="row">{team.myTeamName} <button onClick={this.changeName}>Edit Team Name</button></th>
-            </tr>
-          </thead>
-          <tbody>
-            <MyTeam
-              teamDetails={team}
-              players={players}
-            />
-          </tbody>
-        </table>
+        <div className="col-sm-3 text-center savedTeam" key={team.id}>
+          <table className="table">
+            <thead>
+              <tr>
+                {buttonComponent(team.id, team)}
+              </tr>
+            </thead>
+            <tbody>
+              <MyTeam
+                teamDetails={team}
+                players={players}
+              />
+              <br/>
+              <tr>
+                <td className="btn btn-danger">Delete Team</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       );
     });
     return (
       <div className="SavedTeamPage">
         <h1>Saved Team Page</h1>
-        <div className="col-sm-4">
-          {savedTeamComponent}
-        </div>
+        {savedTeamComponent}
       </div>
     );
   }

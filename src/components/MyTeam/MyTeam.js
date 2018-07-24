@@ -10,7 +10,9 @@ class MyTeam extends React.Component {
       .map(player => teamDetails.players.includes(player.playerId)
         ? (
           <tr key={player.playerId}>
-            <td>{player.displayName}</td>
+            <td className="text-left">{player.displayName}</td>
+            <td>{player.position}</td>
+            <td>{player.team}</td>
           </tr>
         )
         : null
