@@ -31,12 +31,14 @@ class SavedTeamPage extends React.Component {
 
   submitName = (e) => {
     const newName = e.target.value;
-    // const teamId = e.target.id;
     const teamId = this.state.showForm;
     if (e.key === 'Enter') {
-      console.log({newName}, {teamId});
+      const foundTeam = this.state.myTeams.find((team) => {
+        return team.id === teamId;
+      });
+      foundTeam.myTeamName = newName;
       teamRequests
-        .putRequest(teamId, newName)
+        .putRequest(teamId, foundTeam)
         .then(() => {
           this.setState({showForm: ''});
         })
@@ -46,19 +48,12 @@ class SavedTeamPage extends React.Component {
     }
   }
 
-  modifyTeams (teamId) {
-    const modifiedTeam = {...this.state.myTeams};
-    // console.log({modifiedTeam});
-    delete modifiedTeam.myTeams.teamId;
-    this.setState({ myTeams: modifiedTeam});
-  }
-
   deleteTeamClick = (e) => {
     const firebaseId = e.target.id;
     teamRequests
       .deleteRequest(firebaseId)
       .then(() => {
-        this.modifyTeams(firebaseId);
+        this.componentDidMount();
       })
       .catch((err) => {
         console.error('error with delete request', err);
