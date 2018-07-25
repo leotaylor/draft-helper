@@ -53,19 +53,6 @@ class DraftPage extends React.Component {
       });
   }
 
-  // saveTeam = () => {
-  //   const newTeam = {players: {...this.state.myTeam}};
-  //   newTeam.uid = authResuests.getUid();
-  //   newTeam.myTeamName = 'My Team';
-  //   myTeamRequest
-  //     .postRequest(newTeam)
-  //     .then(() => {
-  //     })
-  //     .catch((err) => {
-  //       console.error('error in order post', err);
-  //     });
-  // }
-
   componentDidMount () {
     footballNerdRequest.getRankings()
       .then((players) => {
@@ -87,7 +74,7 @@ class DraftPage extends React.Component {
             myPlayer={this.myPlayer}
           />
         );
-      }
+      } else return null;
     });
     const rbComponents = this.state.players.map((player) => {
       if (player.position === 'RB') {
@@ -99,7 +86,7 @@ class DraftPage extends React.Component {
             myPlayer={this.myPlayer}
           />
         );
-      }
+      } else return null;
     });
     const qbComponents = this.state.players.map((player) => {
       if (player.position === 'QB') {
@@ -111,7 +98,7 @@ class DraftPage extends React.Component {
             myPlayer={this.myPlayer}
           />
         );
-      }
+      } else return null;
     });
     const teComponents = this.state.players.map((player) => {
       if (player.position === 'TE') {
@@ -123,7 +110,7 @@ class DraftPage extends React.Component {
             myPlayer={this.myPlayer}
           />
         );
-      }
+      } else return null;
     });
     const draftHistoryComponents = this.state.drafted.map((player) => {
       return (
