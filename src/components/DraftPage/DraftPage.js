@@ -1,4 +1,5 @@
 import React from 'react';
+// import {Link} from 'react-router-dom';
 
 import './DraftPage.css';
 import footballNerdRequest from '../../footballApiRequests/footballNerdRequest';
@@ -47,6 +48,7 @@ class DraftPage extends React.Component {
     myTeamRequest
       .postRequest(newTeam)
       .then(() => {
+        this.props.history.push('/myteams');
       })
       .catch((err) => {
         console.error('error in order post', err);
@@ -130,7 +132,6 @@ class DraftPage extends React.Component {
     });
     return (
       <div className="DraftPage">
-        <h1>Draft Page</h1>
         <div>
           <div className="col-sm-12">
             <div className="col-sm-3">
