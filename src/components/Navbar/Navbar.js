@@ -17,7 +17,7 @@ class Navbar extends React.Component {
         <nav className="navbar navbar-inverse">
           <div className="container-fluid">
             <div className="navbar-header">
-              <Link to="/" className="navbar-brand">Draft Helper</Link>
+              <Link to="/draftpage" className="navbar-brand">Draft Helper</Link>
             </div>
             {
               authed ? (
