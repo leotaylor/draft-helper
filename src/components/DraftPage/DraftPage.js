@@ -47,6 +47,7 @@ class DraftPage extends React.Component {
     myTeamRequest
       .postRequest(newTeam)
       .then(() => {
+        this.props.history.push('/myteams');
       })
       .catch((err) => {
         console.error('error in order post', err);
@@ -130,7 +131,6 @@ class DraftPage extends React.Component {
     });
     return (
       <div className="DraftPage">
-        <h1>Draft Page</h1>
         <div>
           <div className="col-sm-12">
             <div className="col-sm-3">
@@ -198,43 +198,3 @@ class DraftPage extends React.Component {
 }
 
 export default DraftPage;
-
-// class DraftPage extends React.Component {
-//   state = {
-//     players: [],
-//     myTeam: [],
-//   }
-
-//   componentDidMount () {
-//     footballNerdRequest.getRankings()
-//       .then((players) => {
-//         this.setState({players: players.data.DraftRankings});
-//         console.log(this.state);
-//       })
-//       .catch((err) => {
-//         console.error(err);
-//       });
-//   }
-
-//   render () {
-//     return (
-//       <div className="DraftPage">
-//         <h1>Draft Page</h1>
-//         <div className="col-sm-12">
-//           <div className="col-sm-3"><DraftHistory /></div>
-//           <div className="col-sm-3">
-//             <div className="PositionGroup"><RB /></div>
-//             <div className="PositionGroup"><QB /></div>
-//           </div>
-//           <div className="col-sm-3">
-//             <div className="PositionGroup"><WR /></div>
-//             <div className="PositionGroup"><TE /></div>
-//           </div>
-//           <div className="col-sm-3"><CurrentTeam /></div>
-//         </div>
-//       </div>
-//     );
-//   }
-// }
-
-// export default DraftPage;
