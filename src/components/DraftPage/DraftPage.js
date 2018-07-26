@@ -22,7 +22,7 @@ class DraftPage extends React.Component {
   draftPlayer = (key) => {
     const draftMe = [...this.state.drafted];
     draftMe.push(key);
-    this.setState({drafted: draftMe});
+    this.setState({drafted: draftMe.reverse()});
     const filterd = this.state.players.filter(guy => guy.playerId !== key.playerId);
     this.setState({players: filterd});
   }
@@ -31,7 +31,7 @@ class DraftPage extends React.Component {
     this.draftPlayer(key);
     const myPlayer = [...this.state.myTeam];
     myPlayer.push(key);
-    this.setState({myTeam: myPlayer});
+    this.setState({myTeam: myPlayer.reverse()});
   }
 
   saveTeam = () => {
@@ -132,11 +132,6 @@ class DraftPage extends React.Component {
 
     const teamIds = (this.state.myTeam);
     const teamExists = teamIds.length > 0;
-    // if (this.state.myTeam.length > 0) {
-    //   return (
-    //     <button className="btn btn-danger" onClick={this.saveTeam}>Save My Team</button>
-    //   );
-    // } else return null;
 
     return (
       <div className="DraftPage">
