@@ -3,9 +3,7 @@ import {Route, BrowserRouter, Redirect, Switch} from 'react-router-dom';
 import firebase from 'firebase';
 import './App.css';
 
-// import CurrentTeam from '../components/CurrentTeam/CurrentTeam';
 import DraftPage from '../components/DraftPage/DraftPage';
-// import DraftHistory from '../components/DraftHistory/DraftHistory';
 import SavedTeamPage from '../components/SavedTeamPage/SavedTeamPage';
 import Navbar from '../components/Navbar/Navbar';
 import Login from '../components/Login/Login';
@@ -80,7 +78,7 @@ class App extends Component {
             <div>
               <div className="row">
                 <Switch>
-                  <Route path='/' exact component={DraftPage} />
+                  <Route path="/" exact component={DraftPage} />
                   <PrivateRoute
                     path='/draftpage'
                     authed={this.state.authed}

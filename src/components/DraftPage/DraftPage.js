@@ -129,6 +129,10 @@ class DraftPage extends React.Component {
         />
       );
     });
+
+    const teamIds = (this.state.myTeam);
+    const teamExists = teamIds.length > 0;
+
     return (
       <div className="DraftPage">
         <div>
@@ -138,7 +142,7 @@ class DraftPage extends React.Component {
                 <h1>Draft History</h1>
                 <table className="table">
                   <tbody>
-                    {draftHistoryComponents}
+                    {draftHistoryComponents.reverse()}
                   </tbody>
                 </table>
               </div>
@@ -184,10 +188,18 @@ class DraftPage extends React.Component {
                 <h1>My Team</h1>
                 <table className="table">
                   <tbody>
-                    {currentTeamComponent}
+                    {currentTeamComponent.reverse()}
                   </tbody>
                 </table>
-                <button className="btn btn-danger" onClick={this.saveTeam}>Save My Team</button>
+                <div>
+                  {
+                    teamExists ? (
+                      <button className="btn btn-danger" onClick={this.saveTeam}>Save My Team</button>
+                    ) : (
+                      <div>Add Players</div>
+                    )
+                  }
+                </div>
               </div>
             </div>
           </div>

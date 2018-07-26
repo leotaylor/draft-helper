@@ -17,4 +17,15 @@ class CurrentTeam extends React.Component {
   }
 }
 
+// class SaveButton extends React.Component {
+//   render () {
+//     const myTeam = this.props;
+//     if (myTeam > 0) {
+//       return (
+//         <button className="btn btn-danger" onClick={this.saveTeam}>Save My Team</button>
+//       );
+//     } else return null;
+//   }
+// }
+
 export default CurrentTeam;
