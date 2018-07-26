@@ -129,6 +129,14 @@ class DraftPage extends React.Component {
         />
       );
     });
+
+    // const saveButtonComp = () => {
+    //   if (this.state.myTeam.length > 0) {
+    //     return (
+    //       <button className="btn btn-danger" onClick={this.saveTeam}>Save My Team</button>
+    //     );
+    //   } else return null;
+    // };
     return (
       <div className="DraftPage">
         <div>
@@ -187,6 +195,7 @@ class DraftPage extends React.Component {
                     {currentTeamComponent}
                   </tbody>
                 </table>
+                {/* {saveButtonComp} */}
                 <button className="btn btn-danger" onClick={this.saveTeam}>Save My Team</button>
               </div>
             </div>
