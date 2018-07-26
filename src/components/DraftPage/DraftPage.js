@@ -22,7 +22,7 @@ class DraftPage extends React.Component {
   draftPlayer = (key) => {
     const draftMe = [...this.state.drafted];
     draftMe.push(key);
-    this.setState({drafted: draftMe.reverse()});
+    this.setState({drafted: draftMe});
     const filterd = this.state.players.filter(guy => guy.playerId !== key.playerId);
     this.setState({players: filterd});
   }
@@ -31,7 +31,7 @@ class DraftPage extends React.Component {
     this.draftPlayer(key);
     const myPlayer = [...this.state.myTeam];
     myPlayer.push(key);
-    this.setState({myTeam: myPlayer.reverse()});
+    this.setState({myTeam: myPlayer});
   }
 
   saveTeam = () => {
@@ -142,7 +142,7 @@ class DraftPage extends React.Component {
                 <h1>Draft History</h1>
                 <table className="table">
                   <tbody>
-                    {draftHistoryComponents}
+                    {draftHistoryComponents.reverse()}
                   </tbody>
                 </table>
               </div>
@@ -188,7 +188,7 @@ class DraftPage extends React.Component {
                 <h1>My Team</h1>
                 <table className="table">
                   <tbody>
-                    {currentTeamComponent}
+                    {currentTeamComponent.reverse()}
                   </tbody>
                 </table>
                 <div>
