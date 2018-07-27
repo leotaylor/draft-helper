@@ -10,6 +10,7 @@ import WR from '../../components/PlayerPositions/WR/Wr';
 import RB from '../../components/PlayerPositions/RB/Rb';
 import QB from '../../components/PlayerPositions/QB/Qb';
 import TE from '../../components/PlayerPositions/TE/Te';
+// import Buttons from '../../components/buttons/buttons';
 
 class DraftPage extends React.Component {
 
@@ -17,12 +18,21 @@ class DraftPage extends React.Component {
     players: [],
     drafted: [],
     myTeam: [],
+    draftOrder: 0,
   }
 
   draftPlayer = (key) => {
     const draftMe = [...this.state.drafted];
+    // const players = this.state.players;
+    // const index = players.indexOf();
+    // if (!index) {
+    //   players[index].drafted = this.state.draftOrder + 1;
+    // }
     draftMe.push(key);
-    this.setState({drafted: draftMe});
+    this.setState({
+      drafted: draftMe,
+      // draftOrder: this.state.draftOrder + 1,
+    });
     const filterd = this.state.players.filter(guy => guy.playerId !== key.playerId);
     this.setState({players: filterd});
   }
@@ -53,6 +63,10 @@ class DraftPage extends React.Component {
         console.error('error in order post', err);
       });
   }
+
+  // undoButton () {
+  //   const drafted = this.state.drafted;
+  // }
 
   componentDidMount () {
     footballNerdRequest.getRankings()
@@ -114,10 +128,12 @@ class DraftPage extends React.Component {
       } else return null;
     });
     const draftHistoryComponents = this.state.drafted.map((player) => {
+      // console.log('order', this.state.draftOrder);
       return (
         <DraftHistory
           key={player.playerId}
           details={player}
+          // draftOrder={this.state.draftOrder}
         />
       );
     });
@@ -130,12 +146,17 @@ class DraftPage extends React.Component {
       );
     });
 
+    // const buttonComponent = <Buttons
+    //   draftOrder={this.state.draftOrder}
+    // />;
+
     const teamIds = (this.state.myTeam);
     const teamExists = teamIds.length > 0;
 
     return (
       <div className="DraftPage">
         <div>
+          {/* {buttonComponent} */}
           <div className="col-sm-12">
             <div className="col-sm-3">
               <div className="DraftedGroup">
