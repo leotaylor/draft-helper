@@ -32,3 +32,9 @@
   color: white;
   margin: 0;
   padding-bottom: 15px; }
+
+.tierOne {
+  background-color: gold; }
+
+.tierTwo {
+  background-color: red; }

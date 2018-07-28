@@ -19,14 +19,15 @@ class DraftPage extends React.Component {
     drafted: [],
     myTeam: [],
     draftOrder: 0,
+    tiers: [],
   }
 
   draftPlayer = (key) => {
     const draftMe = [...this.state.drafted];
     // const players = this.state.players;
-    // const index = players.indexOf();
+    // const index = draftMe.indexOf();
     // if (!index) {
-    //   players[index].drafted = this.state.draftOrder + 1;
+    //   draftMe[index].drafted = this.state.draftOrder + 1;
     // }
     draftMe.push(key);
     this.setState({
@@ -78,6 +79,45 @@ class DraftPage extends React.Component {
       });
   }
 
+  // async componentDidMount () {
+  //   const rankingRequest = footballNerdRequest.getRankings();
+  //   const tierRequest = footballNerdRequest.getTiers();
+  //   const data = await Promise.all([rankingRequest, tierRequest ]).catch(error => console.log({error}));
+  //   console.log({data});
+  //   const players = data[0].data.DraftRankings;
+  //   const tiers = data[1].data;
+  //   this.setState({players, tiers});
+  // }
+
+  // tierClasses = () => {
+  //   const playerArray = this.state.players;
+  //   const tierArray = this.state.tiers;
+  //   playerArray.map((player) => {
+  //     player.playerId.map((playerIds) => {
+  //       tierArray.map((tier) => {
+  //         if (tier.playerId === playerIds && tier.tier === '1') {
+  //           return 'tierOne';
+  //         } else
+  //         if (tier.playerId === playerIds && tier.tier === '2') {
+  //           return 'tierTwo';
+  //         } else return null;
+  //       });
+  //       return tierArray;
+  //     });
+  //   });
+  // }
+
+  // tierClasses = () => {
+  //   const tiers = this.state.tiers;
+  //   const players = this.state.player;
+  //   if (tiers.playerId === players.playerId && tiers.tier === '1') {
+  //     return 'tierOne';
+  //   } else
+  //   if (tiers.playerId === players.playerId && tiers.tier === '1') {
+  //     return 'tierTwo';
+  //   } else return null;
+  // }
+
   render () {
     const wrComponents = this.state.players.map((player) => {
       if (player.position === 'WR') {
@@ -87,10 +127,12 @@ class DraftPage extends React.Component {
             details={player}
             draftPlayer={this.draftPlayer}
             myPlayer={this.myPlayer}
+            // tierClass={this.tierClasses}
           />
         );
       } else return null;
     });
+
     const rbComponents = this.state.players.map((player) => {
       if (player.position === 'RB') {
         return (
@@ -128,7 +170,6 @@ class DraftPage extends React.Component {
       } else return null;
     });
     const draftHistoryComponents = this.state.drafted.map((player) => {
-      // console.log('order', this.state.draftOrder);
       return (
         <DraftHistory
           key={player.playerId}
