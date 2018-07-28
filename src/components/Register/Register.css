@@ -1,2 +1,8 @@
-.Register {
-  background-color: #cd5e32; }
+.Register h1 {
+  color: white; }
+
+.Register label {
+  color: white; }
+
+.newColor {
+  color: white; }

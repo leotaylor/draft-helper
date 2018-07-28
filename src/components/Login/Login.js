@@ -73,14 +73,14 @@ class Login extends React.Component {
             </div>
             <div className="form-group">
               <div className="col-sm-offset-2 col-sm-10 text-center">
-                <Link to="/register">Need to Register?</Link>
+                <Link to="/register" className="newColor">Need to Register?</Link>
               </div>
             </div>
             <div className="form-group">
               <div className="col-sm-offset-2 col-sm-10">
                 <button
                   type="submit"
-                  className="btn btn-default col-xs-12"
+                  className="btn btn-success col-xs-12"
                   onClick={this.loginClickEvent}
                 >
                   Login

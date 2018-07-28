@@ -72,12 +72,12 @@ class Register extends React.Component {
             </div>
             <div className="form-group">
               <div className="col-sm-offset-2 col-sm-10 text-center">
-                <Link to="/login">Already a User?</Link>
+                <Link to="/login" className="newColor">Already a User?</Link>
               </div>
             </div>
             <div className="form-group">
               <div className="col-sm-offset-2 col-sm-10">
-                <button type="submit" className="btn btn-default col-xs-12" onClick={this.registerClickEvent}>
+                <button type="submit" className="btn btn-success col-xs-12" onClick={this.registerClickEvent}>
                   Register
                 </button>
               </div>
