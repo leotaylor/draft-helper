@@ -13,14 +13,16 @@ class WR extends React.Component {
   }
 
   render () {
-    const {details} = this.props;
+    const {details, tierClass} = this.props;
+
     return (
-      <tr>
+      <tr className={tierClass}>
         <th scope="row"></th>
+        <td className="text-left">{details.overallRank}</td>
         <td className="text-left">{details.displayName}</td>
         <td className="text-left">{details.team}</td>
         <td><button className="btn-xs btn-danger" onClick={this.draftClickEvent}>Drafted</button></td>
-        <td><button className="btn-xs btn-success" onClick={this.myTeamClickEvent}>My Team</button></td>
+        <td><button className="btn-xs btn-success" onClick={this.myTeamClickEvent}>Mine</button></td>
       </tr>
     );
   }

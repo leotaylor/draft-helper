@@ -6,9 +6,11 @@ class DraftHistory extends React.Component {
 
   render () {
     const details = this.props.details;
+    // const {details, draftOrder} = this.props;
     return (
       <tr>
         <th scope="row"></th>
+        {/* <td className="text-left">{details.draftOrder}</td> */}
         <td className="text-left">{details.displayName}</td>
         <td className="text-center">{details.position}</td>
         <td>{details.team}</td>

@@ -26,7 +26,11 @@
 }
 
 .PositionGroup .table td {
-  padding: 0;
+  padding-left: 2px;
+}
+
+.PositionGroup .table th {
+  padding-left: 2px;
 }
 
 .PositionGroup h1{
@@ -34,4 +38,12 @@
   color: white;
   margin: 0;
   padding-bottom: 15px;
+}
+
+.tierOne {
+  background-color: gold;
+}
+
+.tierTwo {
+  background-color: red;
 }

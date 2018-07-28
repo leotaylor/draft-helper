@@ -9,4 +9,12 @@ const getRankings = () => {
   }
 };
 
-export default {getRankings};
+const getTiers = () => {
+  try {
+    return axios.get(`https://draft-helper.herokuapp.com/api/fantasyfootballnerd/service/tiers/json/${constants.footballNerd.apiKey}`);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export default {getRankings, getTiers};
