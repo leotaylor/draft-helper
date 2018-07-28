@@ -13,10 +13,10 @@ class WR extends React.Component {
   }
 
   render () {
-    const {details, tierClass} = this.props;
+    const {details, tierClasses} = this.props;
 
     return (
-      <tr className={tierClass}>
+      <tr className={tierClasses}>
         <th scope="row"></th>
         <td className="text-left">{details.overallRank}</td>
         <td className="text-left">{details.displayName}</td>

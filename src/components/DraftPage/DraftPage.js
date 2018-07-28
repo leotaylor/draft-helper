@@ -69,54 +69,43 @@ class DraftPage extends React.Component {
   //   const drafted = this.state.drafted;
   // }
 
-  componentDidMount () {
-    footballNerdRequest.getRankings()
-      .then((players) => {
-        this.setState({players: players.data.DraftRankings});
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+  // componentDidMount () {
+  //   footballNerdRequest.getRankings()
+  //     .then((players) => {
+  //       this.setState({players: players.data.DraftRankings});
+  //     })
+  //     .catch((err) => {
+  //       console.error(err);
+  //     });
+  // }
+
+  async componentDidMount () {
+    const rankingRequest = footballNerdRequest.getRankings();
+    const tierRequest = footballNerdRequest.getTiers();
+    const data = await Promise.all([rankingRequest, tierRequest ]).catch(error => console.log({error}));
+    // console.log({data});
+    const players = data[0].data.DraftRankings;
+    const tiers = data[1].data;
+    this.setState({players, tiers}, () => this.tierClasses());
   }
 
-  // async componentDidMount () {
-  //   const rankingRequest = footballNerdRequest.getRankings();
-  //   const tierRequest = footballNerdRequest.getTiers();
-  //   const data = await Promise.all([rankingRequest, tierRequest ]).catch(error => console.log({error}));
-  //   console.log({data});
-  //   const players = data[0].data.DraftRankings;
-  //   const tiers = data[1].data;
-  //   this.setState({players, tiers});
-  // }
-
-  // tierClasses = () => {
-  //   const playerArray = this.state.players;
-  //   const tierArray = this.state.tiers;
-  //   playerArray.map((player) => {
-  //     player.playerId.map((playerIds) => {
-  //       tierArray.map((tier) => {
-  //         if (tier.playerId === playerIds && tier.tier === '1') {
-  //           return 'tierOne';
-  //         } else
-  //         if (tier.playerId === playerIds && tier.tier === '2') {
-  //           return 'tierTwo';
-  //         } else return null;
-  //       });
-  //       return tierArray;
-  //     });
-  //   });
-  // }
-
-  // tierClasses = () => {
-  //   const tiers = this.state.tiers;
-  //   const players = this.state.player;
-  //   if (tiers.playerId === players.playerId && tiers.tier === '1') {
-  //     return 'tierOne';
-  //   } else
-  //   if (tiers.playerId === players.playerId && tiers.tier === '1') {
-  //     return 'tierTwo';
-  //   } else return null;
-  // }
+  tierClasses = () => {
+    const playerArray = this.state.players;
+    const tierArray = this.state.tiers;
+    const tierPlayers = playerArray.map((player) => {
+      player.tier = '';
+      tierArray.map((tier) => {
+        if (tier.playerId === player.playerId && tier.tier === '1') {
+          player.tier = 'tierOne';
+        } else
+        if (tier.playerId === player.playerId && tier.tier === '2') {
+          player.tier = 'tierTwo';
+        } else return null;
+      });
+      return player;
+    });
+    this.setState({players: tierPlayers});
+  }
 
   render () {
     const wrComponents = this.state.players.map((player) => {
@@ -127,7 +116,7 @@ class DraftPage extends React.Component {
             details={player}
             draftPlayer={this.draftPlayer}
             myPlayer={this.myPlayer}
-            // tierClass={this.tierClasses}
+            tierClasses={player.tier}
           />
         );
       } else return null;
