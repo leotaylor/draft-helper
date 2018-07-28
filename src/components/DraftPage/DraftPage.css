@@ -1,9 +1,14 @@
+body {
+  background-image: url("https://i.pinimg.com/originals/fb/55/27/fb5527025eb1494e1f02c1f1e1e2294c.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed; }
+
 .DraftedGroup {
-  height: 825px;
-  overflow: scroll;
   margin-bottom: 25px;
   background-color: white;
-  font-size: 12px; }
+  font-size: 12px;
+  opacity: .77; }
 
 .DraftedGroup .table td {
   padding: 0; }
@@ -19,7 +24,8 @@
   overflow: scroll;
   margin-bottom: 25px;
   background-color: white;
-  font-size: 12px; }
+  font-size: 12px;
+  opacity: .77; }
 
 .PositionGroup .table td {
   padding-left: 2px; }

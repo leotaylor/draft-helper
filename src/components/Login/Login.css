@@ -1,2 +1,8 @@
-.Login {
-  background-color: #3235cd; }
+.Login h1 {
+  color: white; }
+
+.Login label {
+  color: white; }
+
+.newColor {
+  color: white; }

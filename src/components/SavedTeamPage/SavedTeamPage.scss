@@ -1,5 +1,10 @@
 .SavedTeamPage {
   padding: 1%;
+  margin-left: 1%;
+}
+
+.SavedTeamPage h1 {
+  color: white;
 }
 
 .savedTeam {
@@ -9,8 +14,5 @@
   width: 300px;
   height: 450px;
   overflow: scroll;
-}
-
-th {
-  margin-left: 65%;
+  opacity: .83;
 }
