@@ -13,9 +13,9 @@ class QB extends React.Component {
   }
 
   render () {
-    const {details} = this.props;
+    const {details, tierClasses} = this.props;
     return (
-      <tr>
+      <tr className={tierClasses}>
         <th scope="row"></th>
         <td className="text-left">{details.overallRank}</td>
         <td className="text-left">{details.displayName}</td>

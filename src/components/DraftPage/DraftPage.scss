@@ -7,9 +7,11 @@ body{
 
 .DraftedGroup{
   margin-bottom: 25px;
-  background-color: white;
+  background-color: whitesmoke;
   font-size: 12px;
-  opacity: .77;
+  opacity: .8;
+  border: 2px inset black;
+  box-shadow: inset 0 0 20px black;
 }
 
 .DraftedGroup .table td {
@@ -27,13 +29,16 @@ body{
   height: 400px;
   overflow: scroll;
   margin-bottom: 25px;
-  background-color: white;
+  background-color: whitesmoke;
   font-size: 12px;
-  opacity: .77;
+  opacity: .8;
+  border: 2px inset black;
+  box-shadow: inset 0 0 10px black;
 }
 
 .PositionGroup .table td {
   padding-left: 2px;
+  font-weight: bold;
 }
 
 .PositionGroup .table th {
@@ -48,9 +53,24 @@ body{
 }
 
 .tierOne {
-  background-color: gold;
+  background-color: rgb(17, 163, 78);
+  // background-color: rgb(17, 122, 163);
 }
 
 .tierTwo {
-  background-color: red;
+  // background-color: rgb(17, 163, 78);
+  background-color: rgb(17, 122, 163);
+
+}
+
+.tierThree {
+  background-color: rgb(245, 233, 69);
+}
+
+.tierFour {
+  background-color: rgb(243, 166, 22);
+}
+
+.tierFive {
+  background-color: rgb(255, 80, 80);
 }
