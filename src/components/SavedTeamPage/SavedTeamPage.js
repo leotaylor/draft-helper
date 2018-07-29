@@ -65,7 +65,7 @@ class SavedTeamPage extends React.Component {
     const buttonComponent = (id, team) => {
       if (showForm !== id) {
         return (
-          <th scope="row" className="btn btn-success btn-block text-center" id={id} onClick={this.changeNameClick}>{team.myTeamName}</th>
+          <th scope="row" className="btn btn-success btn-block text-center saveButton" id={id} onClick={this.changeNameClick}>{team.myTeamName}</th>
         );
       } else {
         return (
@@ -91,7 +91,7 @@ class SavedTeamPage extends React.Component {
                 players={players}
               />
               <tr>
-                <td className="btn btn-danger btn-block" id={team.id} onClick={this.deleteTeamClick}>Delete Team</td>
+                <td className="btn btn-danger deleteButton" id={team.id} onClick={this.deleteTeamClick}>Delete Team</td>
               </tr>
             </tbody>
           </table>
