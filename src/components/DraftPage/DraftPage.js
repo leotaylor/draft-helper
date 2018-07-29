@@ -130,6 +130,7 @@ class DraftPage extends React.Component {
             details={player}
             draftPlayer={this.draftPlayer}
             myPlayer={this.myPlayer}
+            tierClasses={player.tier}
           />
         );
       } else return null;
@@ -142,6 +143,7 @@ class DraftPage extends React.Component {
             details={player}
             draftPlayer={this.draftPlayer}
             myPlayer={this.myPlayer}
+            tierClasses={player.tier}
           />
         );
       } else return null;
@@ -154,6 +156,7 @@ class DraftPage extends React.Component {
             details={player}
             draftPlayer={this.draftPlayer}
             myPlayer={this.myPlayer}
+            tierClasses={player.tier}
           />
         );
       } else return null;
