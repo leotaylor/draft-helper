@@ -69,16 +69,6 @@ class DraftPage extends React.Component {
   //   const drafted = this.state.drafted;
   // }
 
-  // componentDidMount () {
-  //   footballNerdRequest.getRankings()
-  //     .then((players) => {
-  //       this.setState({players: players.data.DraftRankings});
-  //     })
-  //     .catch((err) => {
-  //       console.error(err);
-  //     });
-  // }
-
   async componentDidMount () {
     const rankingRequest = footballNerdRequest.getRankings();
     const tierRequest = footballNerdRequest.getTiers();
@@ -100,6 +90,21 @@ class DraftPage extends React.Component {
         } else
         if (tier.playerId === player.playerId && tier.tier === '2') {
           player.tier = 'tierTwo';
+        } else
+        if (tier.playerId === player.playerId && tier.tier === '3') {
+          player.tier = 'tierThree';
+        } else
+        if (tier.playerId === player.playerId && tier.tier === '4') {
+          player.tier = 'tierFour';
+        } else
+        if (tier.playerId === player.playerId && tier.tier === '5') {
+          player.tier = 'tierFour';
+        } else
+        if (tier.playerId === player.playerId && tier.tier === '6') {
+          player.tier = 'tierFive';
+        } else
+        if (tier.playerId === player.playerId && tier.tier === '7') {
+          player.tier = 'tierFive';
         } else return null;
       });
       return player;
