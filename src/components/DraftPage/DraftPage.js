@@ -73,7 +73,6 @@ class DraftPage extends React.Component {
     const rankingRequest = footballNerdRequest.getRankings();
     const tierRequest = footballNerdRequest.getTiers();
     const data = await Promise.all([rankingRequest, tierRequest ]).catch(error => console.log({error}));
-    // console.log({data});
     const players = data[0].data.DraftRankings;
     const tiers = data[1].data;
     this.setState({players, tiers}, () => this.tierClasses());
