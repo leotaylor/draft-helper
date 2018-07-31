@@ -6,7 +6,7 @@ class DraftHistory extends React.Component {
 
   render () {
     const details = this.props.details;
-    // const {details, draftOrder} = this.props;
+
     return (
       <tr>
         <th scope="row"></th>

@@ -180,10 +180,6 @@ class DraftPage extends React.Component {
       );
     });
 
-    // const buttonComponent = <Buttons
-    //   draftOrder={this.state.draftOrder}
-    // />;
-
     const teamIds = (this.state.myTeam);
     const teamExists = teamIds.length > 0;
 
