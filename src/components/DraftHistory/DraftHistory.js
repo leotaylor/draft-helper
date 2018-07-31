@@ -6,7 +6,6 @@ class DraftHistory extends React.Component {
 
   render () {
     const details = this.props.details;
-
     return (
       <tr>
         <th scope="row"></th>
@@ -20,3 +19,4 @@ class DraftHistory extends React.Component {
 }
 
 export default DraftHistory;
+// Parent Component is DraftPage.

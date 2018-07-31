@@ -22,12 +22,12 @@ class DraftPage extends React.Component {
     tiers: [],
   }
 
+  // Drafts Players into Draft History Div, adds draftorder number to player, and removes player from positions div.
   draftPlayer = (key) => {
     const draftMe = [...this.state.drafted];
     const draftOrder = this.state.draftOrder;
     key.indexNumber = draftOrder + 1;
     draftMe.push(key);
-    console.log({key});
     this.setState({
       drafted: draftMe,
       draftOrder: draftOrder + 1,
@@ -36,6 +36,7 @@ class DraftPage extends React.Component {
     this.setState({players: filterd});
   }
 
+  // Drafts Player into Current Team (myteam) div
   myPlayer = (key) => {
     this.draftPlayer(key);
     const myPlayer = [...this.state.myTeam];
@@ -43,6 +44,7 @@ class DraftPage extends React.Component {
     this.setState({myTeam: myPlayer});
   }
 
+  // On Button Click from My Team div, takes data from temp state, grab playerIds, and posts playerIds to firebase with default 'My Team' name, then directs to myteams page.
   saveTeam = () => {
     const newTeam = {};
     const tempState = [...this.state.myTeam];
@@ -67,15 +69,17 @@ class DraftPage extends React.Component {
   //   const drafted = this.state.drafted;
   // }
 
+  // 2 API Requests, rankings request , then tiers request, then set both states with returned data arrays, runs the tierClasses function on completion.
   async componentDidMount () {
     const rankingRequest = footballNerdRequest.getRankings();
     const tierRequest = footballNerdRequest.getTiers();
-    const data = await Promise.all([rankingRequest, tierRequest ]).catch(error => console.log({error}));
+    const data = await Promise.all([rankingRequest, tierRequest ]).catch(error => console.error({error}));
     const players = data[0].data.DraftRankings;
     const tiers = data[1].data;
     this.setState({players, tiers}, () => this.tierClasses());
   }
 
+  // returning classNames for color coding players based on tier group.
   tierClasses = () => {
     const playerArray = this.state.players;
     const tierArray = this.state.tiers;
@@ -180,6 +184,7 @@ class DraftPage extends React.Component {
       );
     });
 
+    // Used in ternary below for show/hide save team button in my team.
     const teamIds = (this.state.myTeam);
     const teamExists = teamIds.length > 0;
 
