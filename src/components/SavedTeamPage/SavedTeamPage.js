@@ -15,6 +15,7 @@ class SavedTeamPage extends React.Component {
     showForm: '',
   }
 
+  // Api Requests from Firebase and Fantasty FootBall Nerd.
   async componentDidMount () {
     const teamRequest = myTeamRequest.getRequest(authRequest.getUid());
     const rankingRequest = footballNerdRequest.getRankings();
@@ -24,11 +25,13 @@ class SavedTeamPage extends React.Component {
     this.setState({myTeams, players});
   }
 
+  // adds id to showForm state. Allows form to be shown and button hidden.
   changeNameClick = (e) => {
     const showForm = e.target.id;
     this.setState({showForm: showForm});
   }
 
+  // Updates new team name in firebase. Sets showForm state to empty string which shows button and hides form.
   submitName = (e) => {
     const newName = e.target.value;
     const teamId = this.state.showForm;
@@ -48,6 +51,7 @@ class SavedTeamPage extends React.Component {
     }
   }
 
+  // removes selected team from firebase. Componenet did mount resets and updates the page.
   deleteTeamClick = (e) => {
     const firebaseId = e.target.id;
     teamRequests
@@ -62,6 +66,8 @@ class SavedTeamPage extends React.Component {
 
   render () {
     const {myTeams, players, showForm} = this.state;
+    // Show button as default, if button is clicked replace with input form.
+    // id comes from myTeams array (firebaseId), team is the team object (saved to firebase)
     const buttonComponent = (id, team) => {
       if (showForm !== id) {
         return (
@@ -76,6 +82,7 @@ class SavedTeamPage extends React.Component {
       }
     };
 
+    // maps over myTeams array, returns buttonComponenet and passes in team.id and team for above function, also returns MyTeam componenet, and a delete button.
     const savedTeamComponent = myTeams.map(team => {
       return (
         <div className="col-sm-3 text-center savedTeam" key={team.id}>

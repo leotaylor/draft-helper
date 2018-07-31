@@ -19,3 +19,5 @@ class CurrentTeam extends React.Component {
 }
 
 export default CurrentTeam;
+
+// Parent Component is Draftpage.

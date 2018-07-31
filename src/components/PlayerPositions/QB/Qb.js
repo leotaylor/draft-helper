@@ -28,3 +28,4 @@ class QB extends React.Component {
 }
 
 export default QB;
+// Parent Component is DraftPage.

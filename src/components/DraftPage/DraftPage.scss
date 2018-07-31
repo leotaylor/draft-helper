@@ -1,5 +1,4 @@
 body{
-  // background-image: url('https://i.pinimg.com/originals/fb/55/27/fb5527025eb1494e1f02c1f1e1e2294c.jpg');
   background-image: url('../../images/field.jpg');
   background-repeat: no-repeat;
   background-size: cover;
@@ -25,7 +24,6 @@ body{
 
 .DraftedGroup h1 {
   background-color: black;
-  // background-image: url('https://i.ytimg.com/vi/KM0kJAqrVDo/maxresdefault.jpg');
   background-image: url('../../images/football.jpg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -67,21 +65,30 @@ body{
 
 .tierOne {
   background-color: rgba(17, 163, 78, 0.5);
+  // background-color: rgba(13, 107, 52, 0.781);
 }
 
 .tierTwo {
   background-color: rgba(17, 122, 163, 0.5);
+  // background-color: rgba(12, 74, 99, 0.781);
+
 
 }
 
 .tierThree {
   background-color: rgba(245, 233, 69, 0.5);
+  // background-color: rgba(146, 138, 29, 0.856);
+
 }
 
 .tierFour {
   background-color: rgba(243, 166, 22, 0.5);
+  // background-color: rgba(134, 92, 15, 0.781);
+
+
 }
 
 .tierFive {
   background-color: rgba(255, 80, 80, 0.5);
+  // background-color: rgba(117, 34, 34, 0.781);
 }
