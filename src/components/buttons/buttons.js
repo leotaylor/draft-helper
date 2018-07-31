@@ -5,7 +5,7 @@ import './buttons.css';
 class Buttons extends React.Component {
 
   resetButtonClick = () => {
-    console.log('ppoopp');
+    console.log('wip');
   }
 
   undoButtonClick = () => {

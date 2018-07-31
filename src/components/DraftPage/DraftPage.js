@@ -65,10 +65,6 @@ class DraftPage extends React.Component {
       });
   }
 
-  // undoButton () {
-  //   const drafted = this.state.drafted;
-  // }
-
   // 2 API Requests, rankings request , then tiers request, then set both states with returned data arrays, runs the tierClasses function on completion.
   async componentDidMount () {
     const rankingRequest = footballNerdRequest.getRankings();
