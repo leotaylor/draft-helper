@@ -24,15 +24,13 @@ class DraftPage extends React.Component {
 
   draftPlayer = (key) => {
     const draftMe = [...this.state.drafted];
-    // const players = this.state.players;
-    // const index = draftMe.indexOf();
-    // if (!index) {
-    //   draftMe[index].drafted = this.state.draftOrder + 1;
-    // }
+    const draftOrder = this.state.draftOrder;
+    key.indexNumber = draftOrder + 1;
     draftMe.push(key);
+    console.log({key});
     this.setState({
       drafted: draftMe,
-      // draftOrder: this.state.draftOrder + 1,
+      draftOrder: draftOrder + 1,
     });
     const filterd = this.state.players.filter(guy => guy.playerId !== key.playerId);
     this.setState({players: filterd});
@@ -73,7 +71,6 @@ class DraftPage extends React.Component {
     const rankingRequest = footballNerdRequest.getRankings();
     const tierRequest = footballNerdRequest.getTiers();
     const data = await Promise.all([rankingRequest, tierRequest ]).catch(error => console.log({error}));
-    // console.log({data});
     const players = data[0].data.DraftRankings;
     const tiers = data[1].data;
     this.setState({players, tiers}, () => this.tierClasses());
@@ -171,7 +168,6 @@ class DraftPage extends React.Component {
         <DraftHistory
           key={player.playerId}
           details={player}
-          // draftOrder={this.state.draftOrder}
         />
       );
     });
@@ -183,10 +179,6 @@ class DraftPage extends React.Component {
         />
       );
     });
-
-    // const buttonComponent = <Buttons
-    //   draftOrder={this.state.draftOrder}
-    // />;
 
     const teamIds = (this.state.myTeam);
     const teamExists = teamIds.length > 0;
