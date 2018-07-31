@@ -24,15 +24,13 @@ class DraftPage extends React.Component {
 
   draftPlayer = (key) => {
     const draftMe = [...this.state.drafted];
-    // const players = this.state.players;
-    // const index = draftMe.indexOf();
-    // if (!index) {
-    //   draftMe[index].drafted = this.state.draftOrder + 1;
-    // }
+    const draftOrder = this.state.draftOrder;
+    key.indexNumber = draftOrder + 1;
     draftMe.push(key);
+    console.log({key});
     this.setState({
       drafted: draftMe,
-      // draftOrder: this.state.draftOrder + 1,
+      draftOrder: draftOrder + 1,
     });
     const filterd = this.state.players.filter(guy => guy.playerId !== key.playerId);
     this.setState({players: filterd});
@@ -170,7 +168,6 @@ class DraftPage extends React.Component {
         <DraftHistory
           key={player.playerId}
           details={player}
-          // draftOrder={this.state.draftOrder}
         />
       );
     });
