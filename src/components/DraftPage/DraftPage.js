@@ -54,7 +54,11 @@ class DraftPage extends React.Component {
       draftOrder: draftOrder - 1,
     });
     const filtered = this.state.drafted.filter(guy => guy.playerId !== key.playerId);
-    this.setState({drafted: filtered});
+    const filterMyTeam = this.state.myTeam.filter(guy => guy.playerId !== key.playerId);
+    this.setState({
+      drafted: filtered,
+      myTeam: filterMyTeam,
+    });
   }
 
   // On Button Click from My Team div, takes data from temp state, grab playerIds, and posts playerIds to firebase with default 'My Team' name, then directs to myteams page.
