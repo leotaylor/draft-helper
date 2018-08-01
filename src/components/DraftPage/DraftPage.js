@@ -45,6 +45,7 @@ class DraftPage extends React.Component {
   }
 
   unDraftPlayer = (key) => {
+    // Add players back to position group containers.
     const players = [...this.state.players];
     const draftOrder = this.state.draftOrder;
     key.indexNumber = draftOrder - 1;
@@ -53,6 +54,7 @@ class DraftPage extends React.Component {
       players: players,
       draftOrder: draftOrder - 1,
     });
+    // Removes Players from Draft History and My Team Containers.
     const filtered = this.state.drafted.filter(guy => guy.playerId !== key.playerId);
     const filterMyTeam = this.state.myTeam.filter(guy => guy.playerId !== key.playerId);
     this.setState({
@@ -201,6 +203,7 @@ class DraftPage extends React.Component {
     const teamIds = (this.state.myTeam);
     const teamExists = teamIds.length > 0;
 
+    // Used for undo button.
     const buttonComponent = () => {
       const player = this.state.drafted[this.state.drafted.length - 1 ];
       if (this.state.drafted.length > 0) {
