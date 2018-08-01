@@ -78,7 +78,7 @@ class App extends Component {
             <div>
               <div className="row">
                 <Switch>
-                  <Route path="/" exact component={DraftPage} />
+                  <Route path="/" exact component={Login} />
                   <PrivateRoute
                     path='/draftpage'
                     authed={this.state.authed}
