@@ -10,7 +10,7 @@ import WR from '../../components/PlayerPositions/WR/Wr';
 import RB from '../../components/PlayerPositions/RB/Rb';
 import QB from '../../components/PlayerPositions/QB/Qb';
 import TE from '../../components/PlayerPositions/TE/Te';
-// import Buttons from '../../components/buttons/buttons';
+import Buttons from '../../components/buttons/buttons';
 
 class DraftPage extends React.Component {
 
@@ -42,6 +42,19 @@ class DraftPage extends React.Component {
     const myPlayer = [...this.state.myTeam];
     myPlayer.push(key);
     this.setState({myTeam: myPlayer});
+  }
+
+  unDraftPlayer = (key) => {
+    const players = [...this.state.players];
+    const draftOrder = this.state.draftOrder;
+    key.indexNumber = draftOrder - 1;
+    players.splice(key.overallRank, 0, key);
+    this.setState({
+      players: players,
+      draftOrder: draftOrder - 1,
+    });
+    const filtered = this.state.drafted.filter(guy => guy.playerId !== key.playerId);
+    this.setState({drafted: filtered});
   }
 
   // On Button Click from My Team div, takes data from temp state, grab playerIds, and posts playerIds to firebase with default 'My Team' name, then directs to myteams page.
@@ -184,10 +197,20 @@ class DraftPage extends React.Component {
     const teamIds = (this.state.myTeam);
     const teamExists = teamIds.length > 0;
 
+    const buttonComponent = this.state.drafted.map((player) => {
+      return (
+        <Buttons
+          key={player.playerId}
+          details={player}
+          unDraftPlayer={this.unDraftPlayer}
+        />
+      );
+    });
+
     return (
       <div className="DraftPage">
         <div>
-          {/* {buttonComponent} */}
+          {buttonComponent}
           <div className="col-sm-12">
             <div className="col-sm-3">
               <div className="DraftedGroup">
