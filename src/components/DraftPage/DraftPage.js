@@ -201,20 +201,23 @@ class DraftPage extends React.Component {
     const teamIds = (this.state.myTeam);
     const teamExists = teamIds.length > 0;
 
-    const buttonComponent = this.state.drafted.map((player) => {
-      return (
-        <Buttons
-          key={player.playerId}
-          details={player}
-          unDraftPlayer={this.unDraftPlayer}
-        />
-      );
-    });
+    const buttonComponent = () => {
+      const player = this.state.drafted[this.state.drafted.length - 1 ];
+      if (this.state.drafted.length > 0) {
+        return (
+          <Buttons
+            key={player.playerId}
+            details={player}
+            unDraftPlayer={this.unDraftPlayer}
+          />
+        );
+      }
+    };
 
     return (
       <div className="DraftPage">
         <div>
-          {buttonComponent}
+          {buttonComponent()}
           <div className="col-sm-12">
             <div className="col-sm-3">
               <div className="DraftedGroup">
