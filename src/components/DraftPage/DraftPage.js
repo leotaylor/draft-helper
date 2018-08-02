@@ -49,7 +49,7 @@ class DraftPage extends React.Component {
     const players = [...this.state.players];
     const draftOrder = this.state.draftOrder;
     key.indexNumber = draftOrder - 1;
-    players.splice(key.overallRank, 0, key);
+    players.splice(players.overallRank, 0, key);
     this.setState({
       players: players,
       draftOrder: draftOrder - 1,
