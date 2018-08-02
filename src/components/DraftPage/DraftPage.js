@@ -49,7 +49,7 @@ class DraftPage extends React.Component {
     const players = [...this.state.players];
     const draftOrder = this.state.draftOrder;
     key.indexNumber = draftOrder - 1;
-    players.splice(players.overallRank, 0, key);
+    players.splice(key.overallRank, 0, key);
     this.setState({
       players: players,
       draftOrder: draftOrder - 1,
@@ -205,7 +205,7 @@ class DraftPage extends React.Component {
 
     // Used for undo button.
     const buttonComponent = () => {
-      const player = this.state.drafted[this.state.drafted.length - 1 ];
+      const player = this.state.drafted[this.state.drafted.length - 1];
       if (this.state.drafted.length > 0) {
         return (
           <Buttons
