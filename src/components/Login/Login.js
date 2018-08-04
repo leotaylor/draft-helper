@@ -22,6 +22,7 @@ class Login extends React.Component {
       })
       .catch((err) => {
         console.error('error with login', err);
+        alert(err.message);
       });
   };
 
