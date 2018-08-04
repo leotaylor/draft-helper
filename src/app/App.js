@@ -70,6 +70,8 @@ class App extends Component {
   }
 
   render () {
+    const authentication = this.state.authed;
+    const trueStuff = authentication === true;
     return (
       <div className="App">
         <BrowserRouter>
@@ -78,7 +80,13 @@ class App extends Component {
             <div>
               <div className="row">
                 <Switch>
-                  <Route path="/" exact component={Login} />
+                  {
+                    trueStuff ? (
+                      <Route path="/" exact component={DraftPage} />
+                    ) : (
+                      <Route path="/" exact component={Login} />
+                    )
+                  }
                   <PrivateRoute
                     path='/draftpage'
                     authed={this.state.authed}
