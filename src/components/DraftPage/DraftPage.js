@@ -129,7 +129,12 @@ class DraftPage extends React.Component {
   }
 
   render () {
-    const wrComponents = this.state.players.map((player) => {
+    const copyPlayers = [...this.state.players];
+    const sortedPlayers = copyPlayers.sort((a,b) => {
+      return a.overallRank - b.overallRank;
+    });
+
+    const wrComponents = sortedPlayers.map((player) => {
       if (player.position === 'WR') {
         return (
           <WR
@@ -143,7 +148,7 @@ class DraftPage extends React.Component {
       } else return null;
     });
 
-    const rbComponents = this.state.players.map((player) => {
+    const rbComponents = sortedPlayers.map((player) => {
       if (player.position === 'RB') {
         return (
           <RB
@@ -156,7 +161,7 @@ class DraftPage extends React.Component {
         );
       } else return null;
     });
-    const qbComponents = this.state.players.map((player) => {
+    const qbComponents = sortedPlayers.map((player) => {
       if (player.position === 'QB') {
         return (
           <QB
@@ -169,7 +174,7 @@ class DraftPage extends React.Component {
         );
       } else return null;
     });
-    const teComponents = this.state.players.map((player) => {
+    const teComponents = sortedPlayers.map((player) => {
       if (player.position === 'TE') {
         return (
           <TE

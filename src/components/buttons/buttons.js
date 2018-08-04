@@ -12,7 +12,7 @@ class Buttons extends React.Component {
     return (
       <div className="col-sm-12">
         <div className="text-center">
-          <button className="btn btn-default text-center" onClick={this.undoButtonClick}>Undo</button>
+          <button className="btn btn-warning text-center undo" onClick={this.undoButtonClick}>Undo</button>
         </div>
       </div>
     );
