@@ -16,6 +16,10 @@ class RB extends React.Component {
     this.props.moveUp(this.props.details);
   }
 
+  moveDownEvent = () => {
+    this.props.moveDown(this.props.details);
+  }
+
   render () {
     const {details, tierClasses} = this.props;
     return (
@@ -28,7 +32,7 @@ class RB extends React.Component {
         <td><button className="btn-xs btn-success" onClick={this.myTeamClickEvent}>Mine</button></td>
         {/* Version 2.0 moveplayer up in list */}
         <td className="glyphicon glyphicon-arrow-up" onClick={this.moveUpEvent}></td>
-        <td className="glyphicon glyphicon-arrow-down"></td>
+        <td className="glyphicon glyphicon-arrow-down" onClick={this.moveDownEvent} ></td>
       </tr>
     );
   }

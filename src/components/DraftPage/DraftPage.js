@@ -71,9 +71,19 @@ class DraftPage extends React.Component {
       players.splice(originalIndex, 1);
       players.splice(newIndex, 0, key);
     }
-
     players = players.map(function (player, index) { player.overallRank = index + 1; return player;  });
+    this.setState({ players: players });
+  }
 
+  moveDown = (key) => {
+    let players = [...this.state.players];
+    const originalIndex = players.indexOf(key);
+    if (originalIndex > 0 || originalIndex <= players.length) {
+      const newIndex = originalIndex + 1;
+      players.splice(originalIndex, 1);
+      players.splice(newIndex, 0, key);
+    }
+    players = players.map(function (player, index) { player.overallRank = index + 1; return player;  });
     this.setState({ players: players });
   }
 
@@ -172,8 +182,8 @@ class DraftPage extends React.Component {
             draftPlayer={this.draftPlayer}
             myPlayer={this.myPlayer}
             tierClasses={player.tier}
-            // version 2.0 move player up in list.
             moveUp={this.moveUp}
+            moveDown={this.moveDown}
           />
         );
       } else return null;
