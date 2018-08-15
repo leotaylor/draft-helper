@@ -11,6 +11,10 @@ class RB extends React.Component {
   myTeamClickEvent = () => {
     this.props.myPlayer(this.props.details);
   }
+  // Ver 2.0 move player up in list
+  moveUpEvent = () => {
+    this.props.moveUp(this.props.details);
+  }
 
   render () {
     const {details, tierClasses} = this.props;
@@ -22,6 +26,9 @@ class RB extends React.Component {
         <td className="text-left">{details.team}</td>
         <td><button className="btn-xs btn-danger" onClick={this.draftClickEvent}>Drafted</button></td>
         <td><button className="btn-xs btn-success" onClick={this.myTeamClickEvent}>Mine</button></td>
+        {/* Version 2.0 moveplayer up in list */}
+        <td className="glyphicon glyphicon-arrow-up" onClick={this.moveUpEvent}></td>
+        <td className="glyphicon glyphicon-arrow-down"></td>
       </tr>
     );
   }
