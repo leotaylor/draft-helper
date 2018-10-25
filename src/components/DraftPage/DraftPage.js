@@ -62,6 +62,30 @@ class DraftPage extends React.Component {
       myTeam: filterMyTeam,
     });
   }
+  // Ver 2.0 move players up in list
+  moveUp = (key) => {
+    let players = [...this.state.players];
+    const originalIndex = players.indexOf(key);
+    if (originalIndex > 0) {
+      const newIndex = originalIndex - 1;
+      players.splice(originalIndex, 1);
+      players.splice(newIndex, 0, key);
+    }
+    players = players.map((player, index) => { player.overallRank = index + 1; return player;  });
+    this.setState({ players: players });
+  }
+
+  moveDown = (key) => {
+    let players = [...this.state.players];
+    const originalIndex = players.indexOf(key);
+    if (originalIndex > 0 || originalIndex <= players.length) {
+      const newIndex = originalIndex + 1;
+      players.splice(originalIndex, 1);
+      players.splice(newIndex, 0, key);
+    }
+    players = players.map(function (player, index) { player.overallRank = index + 1; return player;  });
+    this.setState({ players: players });
+  }
 
   // On Button Click from My Team div, takes data from temp state, grab playerIds, and posts playerIds to firebase with default 'My Team' name, then directs to myteams page.
   saveTeam = () => {
@@ -100,7 +124,7 @@ class DraftPage extends React.Component {
     const tierArray = this.state.tiers;
     const tierPlayers = playerArray.map((player) => {
       player.tier = '';
-      tierArray.map((tier) => {
+      tierArray.map((tier) => { // eslint-disable-line array-callback-return
         if (tier.playerId === player.playerId && tier.tier === '1') {
           player.tier = 'tierOne';
         } else
@@ -129,6 +153,7 @@ class DraftPage extends React.Component {
   }
 
   render () {
+    // Sort Players by overall rank for proper undo button functioning
     const copyPlayers = [...this.state.players];
     const sortedPlayers = copyPlayers.sort((a,b) => {
       return a.overallRank - b.overallRank;
@@ -143,6 +168,8 @@ class DraftPage extends React.Component {
             draftPlayer={this.draftPlayer}
             myPlayer={this.myPlayer}
             tierClasses={player.tier}
+            moveUp={this.moveUp}
+            moveDown={this.moveDown}
           />
         );
       } else return null;
@@ -157,6 +184,8 @@ class DraftPage extends React.Component {
             draftPlayer={this.draftPlayer}
             myPlayer={this.myPlayer}
             tierClasses={player.tier}
+            moveUp={this.moveUp}
+            moveDown={this.moveDown}
           />
         );
       } else return null;
@@ -170,6 +199,8 @@ class DraftPage extends React.Component {
             draftPlayer={this.draftPlayer}
             myPlayer={this.myPlayer}
             tierClasses={player.tier}
+            moveUp={this.moveUp}
+            moveDown={this.moveDown}
           />
         );
       } else return null;
@@ -183,6 +214,8 @@ class DraftPage extends React.Component {
             draftPlayer={this.draftPlayer}
             myPlayer={this.myPlayer}
             tierClasses={player.tier}
+            moveUp={this.moveUp}
+            moveDown={this.moveDown}
           />
         );
       } else return null;

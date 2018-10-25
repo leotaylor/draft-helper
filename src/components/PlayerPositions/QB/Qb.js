@@ -12,6 +12,14 @@ class QB extends React.Component {
     this.props.myPlayer(this.props.details);
   }
 
+  moveUpEvent = () => {
+    this.props.moveUp(this.props.details);
+  }
+
+  moveDownEvent = () => {
+    this.props.moveDown(this.props.details);
+  }
+
   render () {
     const {details, tierClasses} = this.props;
     return (
@@ -22,6 +30,8 @@ class QB extends React.Component {
         <td className="text-left">{details.team}</td>
         <td><button className="btn-xs btn-danger" onClick={this.draftClickEvent}>Drafted</button></td>
         <td><button className="btn-xs btn-success" onClick={this.myTeamClickEvent}>Mine</button></td>
+        <td className="glyphicon glyphicon-arrow-up" onClick={this.moveUpEvent}></td>
+        <td className="glyphicon glyphicon-arrow-down" onClick={this.moveDownEvent} ></td>
       </tr>
     );
   }
