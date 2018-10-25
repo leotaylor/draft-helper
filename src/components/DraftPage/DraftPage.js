@@ -71,7 +71,7 @@ class DraftPage extends React.Component {
       players.splice(originalIndex, 1);
       players.splice(newIndex, 0, key);
     }
-    players = players.map(function (player, index) { player.overallRank = index + 1; return player;  });
+    players = players.map((player, index) => { player.overallRank = index + 1; return player;  });
     this.setState({ players: players });
   }
 

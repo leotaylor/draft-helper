@@ -8,8 +8,8 @@ import authRequests from '../../firebaseRequests/auth';
 class Login extends React.Component {
   state = {
     user: {
-      email: '',
-      password: '',
+      email: 'test@test.com',
+      password: 'test123',
     },
   };
 
